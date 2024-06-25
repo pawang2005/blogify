@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <%- include('./partials/head.ejs') %>
+</head>
+
+<body>
+  <%- include('./partials/script.ejs') %>
+  <%- include('./partials/nav.ejs') %>
+  <div class="container mt-3">
+    <div class="row row-cols-4" style="margin-right: 10px;"> 
+      <% if (blogs && blogs.length) { %>
+        
+        <% blogs.forEach(blog => { %>
+          <div class="col">
+            <div class="card col" style="width: 15rem;">
+              <img src="<%= blog.coverImageURL %>" class="card-img-top" height="150vw" width="50vw">
+              <div class="card-body">
+                <h5 class="card-title"><%= blog.title %></h5>
+                <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      
+      <% } else { %>
+        <p>No blogs available.</p>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>
